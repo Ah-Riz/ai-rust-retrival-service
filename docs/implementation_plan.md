@@ -20,11 +20,11 @@ Source of truth: `prd.md`
 
 
 ## Phase 1 — Minimal project skeleton
-- [ ] Create a Rust API service with configuration and a health endpoint.
-- [ ] Create a Python service only if the chosen model workflow requires a separate process.
-- [ ] Add environment-variable examples with placeholders only.
-- [ ] Add formatting/lint commands for Rust and Python.
-- [ ] Add initial README with exact local setup steps.
+- [x] Create a Rust API service with configuration and a health endpoint.
+- [x] Create a Python service only if the chosen model workflow requires a separate process.
+- [x] Add environment-variable examples with placeholders only.
+- [x] Add formatting/lint commands for Rust and Python.
+- [x] Add initial README with exact local setup steps.
 
 Acceptance: services start locally and health checks pass.
 

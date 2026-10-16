@@ -1,7 +1,7 @@
 # Implementation Audit
 
 Version: 0.1
-Status: Phase 0 discovery complete
+Status: Phase 1 skeleton verified
 Last updated: 2026-10-16
 
 ## Purpose
@@ -11,10 +11,10 @@ Compare the actual repository against `prd.md` and `implementation_plan.md`. Thi
 ## Audit summary
 
 - Repository inspected: Yes
-- Build status: N/A - no application code
-- Test status: N/A - no application code
-- Deployment status: N/A - no application config
-- Overall status: Phase 0 discovery complete; docs-only tree; tooling present for Phase 1
+- Build status: complies; `cargo run` server `/health`
+- Test status: Manual verify (fmt/clippy + curl); no automated test yet.
+- Deployment status: Local only
+- Overall status: Phase 1 minimal Rust skeleton verified; Python/Postgres deferred
 
 ## Environment report (T-001)
 
@@ -38,19 +38,19 @@ Compare the actual repository against `prd.md` and `implementation_plan.md`. Thi
 ## Evidence-based checklist
 
 
-| Area                               | Expected evidence                                    | Status      | Evidence / notes |
-| ---------------------------------- | ---------------------------------------------------- | ----------- | ---------------- |
-| Repository discovery               | Structure, versions, Git status recorded             | Done        | docs-only        |
-| Rust API                           | Starts; health endpoint responds                     | Not checked |                  |
-| Python inference/embedding service | Starts if included                                   | Not checked |                  |
-| Storage                            | Schema/migrations apply from clean state             | Not checked |                  |
-| Ingestion                          | Valid and invalid inputs tested                      | Not checked |                  |
-| Retrieval                          | Query returns ranked source metadata                 | Not checked |                  |
-| Evaluation                         | Dataset and retrieval metrics documented             | Not checked |                  |
-| Performance                        | Reproducible benchmark report exists                 | Not checked |                  |
-| Tests                              | Test commands and actual results recorded            | Not checked |                  |
-| Security basics                    | No committed secrets; limits and validation reviewed | Not checked |                  |
-| Documentation                      | Clean-clone setup verified                           | Not checked |                  |
+| Area                               | Expected evidence                                    | Status      | Evidence / notes                                                             |
+| ---------------------------------- | ---------------------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
+| Repository discovery               | Structure, versions, Git status recorded             | Done        | docs-only                                                                    |
+| Rust API                           | Starts; health endpoint responds                     | Done        | `cargo run`; `curl -i http://127.0.0.1:8080/health` -> 200 `{"status":"ok"}` |
+| Python inference/embedding service | Starts if included                                   | Not checked |                                                                              |
+| Storage                            | Schema/migrations apply from clean state             | Not checked |                                                                              |
+| Ingestion                          | Valid and invalid inputs tested                      | Not checked |                                                                              |
+| Retrieval                          | Query returns ranked source metadata                 | Not checked |                                                                              |
+| Evaluation                         | Dataset and retrieval metrics documented             | Not checked |                                                                              |
+| Performance                        | Reproducible benchmark report exists                 | Not checked |                                                                              |
+| Tests                              | Test commands and actual results recorded            | Not checked |                                                                              |
+| Security basics                    | No committed secrets; limits and validation reviewed | Not checked |                                                                              |
+| Documentation                      | Clean-clone setup verified                           | Partial     | README has setup/verify; clean-clone not re-verified from empty clone        |
 
 
 
@@ -74,10 +74,13 @@ Compare the actual repository against `prd.md` and `implementation_plan.md`. Thi
 
 ### Verified
 
-- Documentation only.
-- Toolchain checked: rustc/cargo 1.93.1, Python 3.14.5, psql 16.13; `docker` not on PATH; Podman package 5.8.2 installed.
-- Phase 0 acceptance target met once: environment report exists; nothing overwritten.
-- Phase 1 inputs are greenfield: create Rust health API + `.env.example` + README from scratch.
+- Phase 0: docs-only discovery (T-001); toolchain rustc/cargo 1.93.1.
+- Phase 1 (T-002):
+  - `cargo fmt` / `cargo fmt --check`: pass
+  - `cargo clippy`: pass (Finished, no warnings)
+  - `cargo run`: server started
+  - `curl -i http://127.0.0.1:8080/health` → HTTP 200, `{"status":"ok"}`
+  - Files: `Cargo.toml`, `src/main.rs`, `.env.example`, `README.md`; `.gitignore` includes `.env`
 
 
 
@@ -96,5 +99,6 @@ Compare the actual repository against `prd.md` and `implementation_plan.md`. Thi
 
 ## Next actions
 
-- Phase 1: health endpoint + README (minimal Rust skeleton).
+- Phase 2 (or next `task_today`): data model / storage planning — not started.
+- Python service: deferred until embedding workflow needs a separate process.
 
