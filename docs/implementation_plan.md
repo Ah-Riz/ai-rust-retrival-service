@@ -12,13 +12,12 @@ Source of truth: `prd.md`
 - If blocked, record the issue in `bugs.md` before attempting broad changes.
 
 ## Phase 0 — Repository and environment discovery
-- [ ] Inspect repository structure, Git status, current language/framework versions, and existing conventions.
-- [ ] Identify available Rust, Python, Docker, and PostgreSQL tooling.
-- [ ] Record existing code and reusable components; do not overwrite them blindly.
-- [ ] Confirm project name and license.
-- [ ] Create or update this plan only after repository facts are known.
+- [x] Inspect repository structure, Git status, current language/framework versions, and existing conventions.
+- [x] Identify available Rust, Python, Docker, and PostgreSQL tooling.
+- [x] Record existing code and reusable components; do not overwrite them blindly.
+- [x] Confirm project name done and license unknown.
+- [x] Create or update this plan only after repository facts are known.
 
-Acceptance: a short environment report exists and no existing work has been overwritten.
 
 ## Phase 1 — Minimal project skeleton
 - [ ] Create a Rust API service with configuration and a health endpoint.

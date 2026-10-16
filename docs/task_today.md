@@ -1,6 +1,6 @@
 # Active Task
 Task ID: T-001
-Status: Ready
+Status: Done
 Goal: Inspect the current repository and report the safest implementation starting point.
 
 ## Context
@@ -22,10 +22,10 @@ Read `prd.md` and `implementation_plan.md` before making changes.
 5. Suggested updates to `implementation_plan.md` based on observed facts.
 
 ## Acceptance criteria
-- [ ] Repository facts are evidence-based.
-- [ ] No application code changed unless needed for a minimal inspection artifact and approved.
-- [ ] Risks and unknowns are clearly separated from facts.
-- [ ] Next task is small enough to complete and verify in one focused session.
+- [x] Repository facts are evidence-based.
+- [x] No application code changed unless needed for a minimal inspection artifact and approved.
+- [x] Risks and unknowns are clearly separated from facts.
+- [x] Next task is small enough to complete and verify in one focused session.
 
 ## Reference files
 - `prd.md`
